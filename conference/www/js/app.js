@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngOpenFB'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -43,22 +43,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngOpenFB'])
   })
 
   .state('app.browse', {
-      url: '/browse',
-      views: {
+    url: '/browse',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/browse.html'
+      }
+    }
+  })
+
+  .state('app.sessions', {
+    url: "/sessions",
+    views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+            templateUrl: "templates/sessions.html",
+            controller: 'SessionsCtrl'
         }
-      }
-    })
-    .state('app.sessions', {
-      url: "/sessions",
-      views: {
-          'menuContent': {
-              templateUrl: "templates/sessions.html",
-              controller: 'SessionsCtrl'
-          }
-      }
-    })
+    }
+  })
 
   .state('app.session', {
     url: "/sessions/:sessionId",
@@ -68,7 +69,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngOpenFB'])
           controller: 'SessionCtrl'
       }
     }
-  });
+  })
+
+  .state('app.profile', {
+    url: "/profile",
+    views: {
+        'menuContent': {
+            templateUrl: "templates/profile.html",
+            controller: "ProfileCtrl"
+        }
+    }
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/sessions');
 });
